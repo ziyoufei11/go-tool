@@ -1,0 +1,9 @@
+# 默认忽略的文件
+.idea/
+.vscode/
+dist/
+log/
+go.sum
+test
+*.exe
+.DS_Store
