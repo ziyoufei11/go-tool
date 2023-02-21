@@ -1,5 +1,7 @@
 package lru
 
+import "sync"
+
 type Node struct {
 	key, value string
 	prev, next *Node
@@ -10,6 +12,7 @@ type cachrLru struct {
 	capacity   int
 	list       map[string]*Node
 	head, tail *Node
+	lock       sync.Mutex
 }
 
 // InitLru 初始化新的lru,返回链表需要常态储存
@@ -28,6 +31,8 @@ func InitLru(capacity int) *cachrLru {
 }
 
 func (this *cachrLru) Get(key string) string {
+	this.lock.Lock()
+	defer this.lock.Unlock()
 	if _, ok := this.list[key]; !ok {
 		return "Not Found"
 	}
@@ -37,6 +42,8 @@ func (this *cachrLru) Get(key string) string {
 }
 
 func (this *cachrLru) Put(key string, value string) {
+	this.lock.Lock()
+	defer this.lock.Unlock()
 	if _, ok := this.list[key]; ok {
 		//已有.更新
 		node := this.list[key]
@@ -53,6 +60,8 @@ func (this *cachrLru) Put(key string, value string) {
 }
 
 func (this *cachrLru) DelNodeByKey(key string) {
+	this.lock.Lock()
+	defer this.lock.Unlock()
 	node := this.list[key]
 	if node != nil {
 		this.delNode(node)
