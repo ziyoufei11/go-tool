@@ -2,11 +2,11 @@ package redis
 
 import (
 	"context"
+	"github.com/redis/go-redis/v9"
 	"strings"
 	"sync"
 	"time"
 
-	"github.com/go-redis/redis/v8"
 	"github.com/spf13/viper"
 
 	"go_tool/support/logger"
@@ -19,7 +19,6 @@ type Config struct {
 	Pwd          string        `yaml:"pwd" json:"pwd"`
 	Db           int           `yaml:"db" json:"db"`
 	MinIdleConns int           `yaml:"minIdleConns" json:"minIdleConns"`           //闲置连接的最小数量，在建立新连接速度较慢时很有用。
-	IdleTimeout  time.Duration `yaml:"idleTimeout" json:"idleTimeout,omitempty"`   //客户端关闭空闲连接的时间,默认5分钟，-1关闭配置
 	DialTimeout  time.Duration `yaml:"dialTimeout" json:"dialTimeout,omitempty"`   //客户端关闭空闲连接的时间,默认5分钟，-1关闭配置
 	ReadTimeout  time.Duration `yaml:"readTimeout" json:"readTimeout,omitempty"`   //客户端关闭空闲连接的时间,默认5分钟，-1关闭配置
 	WriteTimeout time.Duration `yaml:"writeTimeout" json:"writeTimeout,omitempty"` //客户端关闭空闲连接的时间,默认5分钟，-1关闭配置
@@ -87,7 +86,6 @@ func (r *Redis) connectToRedisCluster() *redis.ClusterClient {
 		Username:     r.Config.Username,
 		Password:     r.Config.Pwd,
 		MinIdleConns: r.Config.MinIdleConns,
-		IdleTimeout:  r.Config.IdleTimeout,
 		//DialTimeout:  r.Config.DialTimeout,  // 设置连接超时
 		//ReadTimeout:  r.Config.ReadTimeout,  // 设置读取超时
 		//WriteTimeout: r.Config.WriteTimeout, // 设置写入超时
@@ -110,7 +108,6 @@ func (r *Redis) connectToRedis() *redis.Client {
 		Password:     r.Config.Pwd,
 		DB:           r.Config.Db,
 		MinIdleConns: r.Config.MinIdleConns,
-		IdleTimeout:  r.Config.IdleTimeout,
 	})
 
 	err := Store.CanIUseRedis()
