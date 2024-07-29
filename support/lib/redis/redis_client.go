@@ -3,14 +3,13 @@ package redis
 import (
 	"context"
 	"github.com/redis/go-redis/v9"
+	"github.com/ziyoufei11/go-tool/support/logger"
+	"github.com/ziyoufei11/go-tool/support/runtime"
 	"strings"
 	"sync"
 	"time"
 
 	"github.com/spf13/viper"
-
-	"go_tool/support/logger"
-	"go_tool/support/runtime"
 )
 
 type Config struct {

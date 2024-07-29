@@ -1,10 +1,9 @@
 package runtime
 
 import (
+	"github.com/ziyoufei11/go-tool/support/logger"
 	"sync"
 	"time"
-
-	"go_tool/support/logger"
 )
 
 type runtimeCache struct {
