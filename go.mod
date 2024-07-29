@@ -1,4 +1,4 @@
-module go-tool
+module github.com/ziyoufei11/go-tool
 
 go 1.21
 
