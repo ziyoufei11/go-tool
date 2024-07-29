@@ -1,8 +1,9 @@
-module go_tool
+module go-tool
 
 go 1.21
 
 require (
+	github.com/ClickHouse/clickhouse-go/v2 v2.26.0
 	github.com/elastic/go-elasticsearch/v8 v8.14.0
 	github.com/fatih/color v1.13.0
 	github.com/importcjj/sensitive v0.0.0-20200106142752-42d1c505be7b
@@ -10,6 +11,8 @@ require (
 	github.com/spf13/viper v1.10.1
 	go.uber.org/zap v1.27.0
 	gopkg.in/natefinch/lumberjack.v2 v2.0.0
+	gorm.io/driver/mysql v1.5.0
+	gorm.io/gorm v1.25.11
 )
 
 require (
@@ -25,7 +28,6 @@ require (
 	github.com/spf13/cast v1.4.1
 	github.com/spf13/jwalterweatherman v1.1.0 // indirect
 	github.com/subosito/gotenv v1.2.0 // indirect
-	go.uber.org/atomic v1.11.0 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
 	golang.org/x/sys v0.20.0 // indirect
 	golang.org/x/text v0.16.0 // indirect
@@ -36,7 +38,6 @@ require (
 require (
 	github.com/BurntSushi/toml v1.0.0 // indirect
 	github.com/ClickHouse/ch-go v0.61.5 // indirect
-	github.com/ClickHouse/clickhouse-go/v2 v2.26.0 // indirect
 	github.com/andybalholm/brotli v1.1.0 // indirect
 	github.com/elastic/elastic-transport-go/v8 v8.6.0 // indirect
 	github.com/fsnotify/fsnotify v1.5.1 // indirect
@@ -49,21 +50,14 @@ require (
 	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/jinzhu/now v1.1.5 // indirect
 	github.com/klauspost/compress v1.17.7 // indirect
-	github.com/kr/pretty v0.3.1 // indirect
-	github.com/mattn/go-sqlite3 v1.14.22 // indirect
 	github.com/paulmach/orb v0.11.1 // indirect
 	github.com/pierrec/lz4/v4 v4.1.21 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
-	github.com/rogpeppe/go-internal v1.10.0 // indirect
 	github.com/segmentio/asm v1.2.0 // indirect
 	github.com/shopspring/decimal v1.4.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	go.opentelemetry.io/otel v1.26.0 // indirect
 	go.opentelemetry.io/otel/metric v1.26.0 // indirect
 	go.opentelemetry.io/otel/trace v1.26.0 // indirect
-	gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
-	gorm.io/driver/mysql v1.5.0 // indirect
-	gorm.io/driver/sqlite v1.5.6 // indirect
-	gorm.io/gorm v1.25.11 // indirect
 )
