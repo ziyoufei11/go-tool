@@ -9,20 +9,24 @@ import (
 	"go.uber.org/zap"
 	"net"
 	"net/http"
+	"sync"
 	"time"
 )
 
 var isConnected bool
 var Client *elasticsearch.Client
+var once sync.Once
 
 func Init() {
-	err := connectToEs()
-	if err != nil {
-		color.Red("[ES] Init es error: %s", err)
-		return
-	}
-	//心跳重连
-	go heartbeat()
+	once.Do(func() {
+		err := connectToEs()
+		if err != nil {
+			color.Red("[ES] Init es error: %s", err)
+			return
+		}
+		//心跳重连
+		go heartbeat()
+	})
 }
 
 func heartbeat() {
